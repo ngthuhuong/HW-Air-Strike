@@ -1,17 +1,19 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
     private float moveSpeed = 10f;
+    private Vector2 moveDirection = Vector2.up;
 
-    
+    public void SetDirection(Vector2 dir)
+    {
+        moveDirection = dir.normalized;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
@@ -20,13 +22,13 @@ public class BulletManager : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.Translate(( moveSpeed * Time.deltaTime)*Vector2.up );
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
         checkOutScreen();
     }
 
     private void checkOutScreen()
     {
-        if(gameObject.transform.position.y > 5.25f ||  gameObject.transform.position.x > 3f || gameObject.transform.position.x < -3f)
+        if (transform.position.y > 5.25f || transform.position.x > 3f || transform.position.x < -3f)
         {
             Destroy(gameObject);
         }
