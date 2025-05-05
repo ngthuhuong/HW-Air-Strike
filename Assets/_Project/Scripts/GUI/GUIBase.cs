@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class GUIBase : MonoBehaviour
 {
-    public GameObject uiElement;
-
+   
     private void Start()
     {
         Hide();
@@ -12,12 +11,12 @@ public class GUIBase : MonoBehaviour
 
     public virtual void Show()
     {
-        uiElement.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public virtual void Hide()
     {
-        uiElement.SetActive(false);
+        gameObject.SetActive(false);
     }
 
 

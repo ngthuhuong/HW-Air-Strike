@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a1f5a2e346c7249906b6cc3c6d6abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 0}
   textScore: {fileID: 471922852}
   textHP: {fileID: 1753488469}
 --- !u!1 &471922850
@@ -542,7 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb9f52f03064773b22a0f9be8f489f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 1043961191}
   text: {fileID: 1670841110}
 --- !u!1 &1198835601
 GameObject:
@@ -1099,8 +1097,8 @@ MonoBehaviour:
   enemyProjectileContainer: {fileID: 4905279431514922562, guid: f066d1c0d4bed014da523ec03da5112c, type: 3}
   centerPoint: {fileID: 1427195738}
   allLevels:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 00fd814173657ee48a73491591ca5957, type: 2}
+  - {fileID: 11400000, guid: aeddc0cd5cd8bfa4ebd6dd251acf602e, type: 2}
   isLevelComplete: 0
 --- !u!1 &1798588253
 GameObject:
@@ -1149,7 +1147,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 1
   highScore: 0
   currentScore: 0
-  currentLevelId: 0
+  currentLevelId: 1
 --- !u!1 &1811857761
 GameObject:
   m_ObjectHideFlags: 0
