@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public Vector3 targetPosition;
-    public bool hasStopped = false;
-
     private float moveSpeed = 4f;
+    [SerializeField]
 
     void Update()
     {
-        if (!hasStopped)
-        {
-            // Di chuyển tới targetPosition
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        // Move the enemy downward
+        transform.position +=  moveSpeed * Time.deltaTime * Vector3.down ;
 
-            // Kiểm tra nếu đến nơi thì dừng lại
-            if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
-            {
-                transform.position = targetPosition;
-                hasStopped = true;
-                this.enabled = false; // Tắt Update để tiết kiệm hiệu năng
-            }
+        // Optional: Destroy the enemy if it goes out of bounds
+        if (transform.position.y < -10f) // Adjust the boundary as needed
+        {
+            Destroy(gameObject);
         }
     }
+    
+    
+    #region Private Methods
+private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(TagConst.TagPlayer))
+        {
+            Debug.Log("Collision w"+ other.name);
+            Die();
+        }
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+    
+
+    #endregion
 }

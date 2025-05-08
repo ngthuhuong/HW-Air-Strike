@@ -3,10 +3,9 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     [SerializeField]
-    public int attackDamage = 10;
+    public int attackDamage = 5;
     public float attackRange = 1.5f;
     
-    public string targetTag = "Player"; // Tag of the target to attack
 
     public int AttackDamage
     {
@@ -15,7 +14,7 @@ public class AttackController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag(targetTag))
+        if(other.CompareTag(TagConst.TagPlayer))
         {
             HealthController targetHealth = other.GetComponent<HealthController>();
             if (targetHealth != null)

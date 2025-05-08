@@ -2,26 +2,35 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int currentHealth;
+    public int maxHealth = 10;
+    [SerializeField] private int currentHealth; 
+
+    public int CurrentHealth
+    {
+        get => currentHealth;
+        set => currentHealth = Mathf.Clamp(value, 0, maxHealth);
+    }
 
     private void Start()
     {
         currentHealth = maxHealth;
     }
 
+    #region Public Methods
+
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
+        CurrentHealth -= damage;
+        if (CurrentHealth <= 0)
         {
-            Die();
+            return;
         }
     }
 
-    private void Die()
+    public void SetHealth()
     {
-        Debug.Log($"{gameObject.name} has died.");
-        Destroy(gameObject); // Destroy the GameObject on death
+        CurrentHealth = maxHealth;
     }
+
+    #endregion
 }
